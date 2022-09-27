@@ -32,4 +32,8 @@
   border-radius: 100%;
   width: 42px;
   height: 42px;
+  cursor: pointer;
+}
+.player__score button:hover {
+  background: #000;
 }
