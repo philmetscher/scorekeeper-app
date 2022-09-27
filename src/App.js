@@ -17,6 +17,27 @@ function App() {
     ]);
   }
 
+  function handleAddScore(id) {
+    setPlayers((oldPlayers) =>
+      oldPlayers.map((oldPlayer) =>
+        oldPlayer.id === id
+          ? { ...oldPlayer, score: oldPlayer.score + 1 }
+          : oldPlayer
+      )
+    );
+  }
+  function handleSubstractScore(id) {
+    setPlayers((oldPlayers) =>
+      oldPlayers.map((oldPlayer) =>
+        oldPlayer.id === id
+          ? oldPlayer.score > 0
+            ? { ...oldPlayer, score: oldPlayer.score - 1 }
+            : oldPlayer
+          : oldPlayer
+      )
+    );
+  }
+
   return (
     <AppContainer>
       <AppHeader>
@@ -25,7 +46,13 @@ function App() {
       <AppMain>
         <PlayerList>
           {players.map(({ id, name, score }) => (
-            <Player key={id} name={name} score={score} setScore={() => {}} />
+            <Player
+              key={id}
+              name={name}
+              score={score}
+              addScore={() => handleAddScore(id)}
+              substractScore={() => handleSubstractScore(id)}
+            />
           ))}
         </PlayerList>
         <ButtonGroup>
