@@ -1,10 +1,25 @@
 import styled from "styled-components";
 
-export default function PlayerForm() {
+export default function PlayerForm({ onSubmit }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    const name = data.playername;
+
+    onSubmit(name);
+  }
+
   return (
-    <Form>
+    <Form onSubmit={(event) => handleSubmit(event)}>
       <label htmlFor="playername">Add player:</label>
-      <input id="playername" placeholder="Player name" />
+      <input
+        id="playername"
+        name="playername"
+        placeholder="Player name"
+        type="text"
+      />
     </Form>
   );
 }

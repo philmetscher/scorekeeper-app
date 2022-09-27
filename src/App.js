@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import styled from "styled-components";
 import Player from "./components/player/Player";
@@ -9,6 +9,13 @@ import { initialPlayerList } from "./db.js";
 
 function App() {
   const [players, setPlayers] = useState(initialPlayerList);
+
+  function createPlayer(name) {
+    setPlayers((prevPlayers) => [
+      ...prevPlayers,
+      { id: Math.random(36), name: name, score: 0 },
+    ]);
+  }
 
   return (
     <AppContainer>
@@ -25,7 +32,7 @@ function App() {
           <Button>Reset Scores</Button>
           <Button>Reset All</Button>
         </ButtonGroup>
-        <PlayerForm />
+        <PlayerForm onSubmit={createPlayer} />
       </AppMain>
     </AppContainer>
   );
