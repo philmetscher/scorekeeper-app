@@ -38,6 +38,21 @@ function App() {
     );
   }
 
+  function handleResetScore() {
+    setPlayers((oldPlayers) => {
+      return oldPlayers.map((oldPlayer) => {
+        return {
+          ...oldPlayer,
+          score: 0,
+        };
+      });
+    });
+  }
+
+  function handleResetAll() {
+    setPlayers((oldPlayers) => initialPlayerList);
+  }
+
   return (
     <AppContainer>
       <AppHeader>
@@ -56,8 +71,8 @@ function App() {
           ))}
         </PlayerList>
         <ButtonGroup>
-          <Button>Reset Scores</Button>
-          <Button>Reset All</Button>
+          <Button onClick={handleResetScore}>Reset Scores</Button>
+          <Button onClick={handleResetAll}>Reset All</Button>
         </ButtonGroup>
         <PlayerForm onSubmit={createPlayer} />
       </AppMain>
