@@ -13,9 +13,7 @@ const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px dotted #333;
   width: 100%;
-  padding: 10px;
 
   input {
     padding: 9px 10px;

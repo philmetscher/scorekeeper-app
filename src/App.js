@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Player from "./components/player/Player";
+import Button from "./components/Button";
 import PlayerForm from "./components/playerform/PlayerForm";
 
 function App() {
@@ -14,6 +15,10 @@ function App() {
           <Player name={"Phil"} score={1} setScore={() => {}} />
           <Player name={"Sukhpreet"} score={1000} setScore={() => {}} />
         </PlayerList>
+        <ButtonGroup>
+          <Button>Reset Scores</Button>
+          <Button>Reset All</Button>
+        </ButtonGroup>
         <PlayerForm />
       </AppMain>
     </AppContainer>
@@ -43,7 +48,11 @@ const AppMain = styled.main`
   max-width: 500px;
   margin: 0 auto;
 `;
-
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
 const PlayerList = styled.ul`
   list-style-type: none;
 `;
