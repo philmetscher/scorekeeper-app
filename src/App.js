@@ -1,9 +1,15 @@
+import { useState } from "react";
+
 import styled from "styled-components";
 import Player from "./components/player/Player";
 import Button from "./components/Button";
 import PlayerForm from "./components/playerform/PlayerForm";
 
+import { initialPlayerList } from "./db.js";
+
 function App() {
+  const [players, setPlayers] = useState(initialPlayerList);
+
   return (
     <AppContainer>
       <AppHeader>
@@ -11,9 +17,9 @@ function App() {
       </AppHeader>
       <AppMain>
         <PlayerList>
-          <Player name={"Kai"} score={10} setScore={() => {}} />
-          <Player name={"Phil"} score={1} setScore={() => {}} />
-          <Player name={"Sukhpreet"} score={1000} setScore={() => {}} />
+          {players.map(({ id, name, score }) => (
+            <Player key={id} name={name} score={score} setScore={() => {}} />
+          ))}
         </PlayerList>
         <ButtonGroup>
           <Button>Reset Scores</Button>
